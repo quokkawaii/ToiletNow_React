@@ -1,0 +1,7 @@
+.logo-line {
+  width: 34%;
+  /*
+        logo-line 클래스를 가지고 있는 태그에 너비를 줘서
+        내용물이 들어있지 않은 div도 space-between이 적용되게
+    */
+}
