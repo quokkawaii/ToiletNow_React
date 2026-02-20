@@ -1,38 +1,69 @@
 import { useEffect } from "react";
-import * as kakaoMapUtil from "./kakaoMaputil";
-
-// 초기 맵생성과 마커 찍기, 기능이라 분리 해야됨
-// 임시 값을 넣어놨음
-// useEffect안에서 비동기 코드 못돌려서 해결방법 찾아야할듯
-// 37.7484 127.0382 => 내 위치
-const initMap = async () => {
-  let { lat, lng } = await kakaoMapUtil.currLocation();
-
-  const map: kakao.maps.Map = kakaoMapUtil.createkakaoMap(lat, lng);
-
-  // 마커 찍기 (현재 위치)
-  kakaoMapUtil.createMarker(map, lat, lng, "위치가 이상해");
-  console.log(lat, lng);
-
-  // 마커 찍기 (주변 위치)
-  kakaoMapUtil.sampleLocations.forEach((location) => {
-    kakaoMapUtil.createMarker(map, location.lat, location.lng, location.title);
-  });
-};
+import * as kakaoMapUtil from "../../utils/homeUtil/kakaoMapUtil";
+import * as kakaoMarkerUtil from "../../utils/homeUtil/kakaoMarkerUtil";
+import { useMap } from "../../contexts/MapContext";
 
 export default function Map() {
+  const { initMap, setMarkers, toiletRef, fetchToilets } = useMap();
+
   useEffect(() => {
     kakao.maps.load(() => {
-      // 초기 맵 생성
-      initMap();
+      const startApp = async () => {
+        try {
+          const { lat, lng } = await kakaoMapUtil.currLocation(); // 현재 위치 위도경도
+          const currentMap = initMap(lat, lng); // 해당 값을 중심점으로 맵 생성
+
+          if (currentMap) {
+            // 맵이 생성되었을 경우
+
+            // 맵의 마커들을 담을 변수 : 내 위치와 주변 화장실 정보를 담기 추후 마커 삭제를 위해 필요
+            const tempMarkers: kakao.maps.Marker[] = [];
+
+            // 현재 위치의 마커를 맵에 생성하고 tempMarkers에 저장
+            const myMarker = kakaoMarkerUtil.createMarker(
+              currentMap,
+              lat,
+              lng,
+              "내 위치",
+            );
+            tempMarkers.push(myMarker);
+
+            // 주변 반경 1km 화장실 정보 가져오기
+            await fetchToilets(lat, lng); // toiletRef의 값 바꾸기
+
+            // 만약 totiletDatas가 array일 경우 (=주변 화장실이 있을경우)
+            if (Array.isArray(toiletRef.current)) {
+              // 모든 화장실의 값을 맵에 찍어주기 + tempMarkers에 저장
+              toiletRef.current.forEach((toilet: any) => {
+                const marker = kakaoMarkerUtil.createMarker(
+                  currentMap,
+                  toilet.tlat,
+                  toilet.tlot,
+                  toilet.tname,
+                );
+                tempMarkers.push(marker);
+              });
+            }
+
+            // 전역 상태에 모든 마커 저장 (그래야 SearchLocation에서 지움)
+            setMarkers(tempMarkers); // 마커들의 정보를 수정하는 setMarkers, markers의 값 수정
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      startApp();
     });
-  }, []);
+  }, []); // useEffect로 맨 처음 실행되었을때만 맵을 그림
 
   return (
-    <div
-      id="map"
-      className="shadow-sm rounded mx-auto"
-      style={{ width: "500px", height: "500px" }}
-    ></div>
+    <div>
+      <div
+        id="map"
+        className="shadow-sm rounded mx-auto"
+        style={{ width: "100vh", height: "100vh" }}
+      ></div>
+    </div>
   );
 }
