@@ -58,12 +58,10 @@ export default function Map() {
   }, []); // useEffect로 맨 처음 실행되었을때만 맵을 그림
 
   return (
-    <div>
-      <div
-        id="map"
-        className="shadow-sm rounded mx-auto"
-        style={{ width: "100vh", height: "100vh" }}
-      ></div>
-    </div>
+    <div
+      id="map"
+      className="shadow-sm rounded mx-auto"
+      style={{ width: "100%", height: "100%" }}
+    ></div>
   );
 }
