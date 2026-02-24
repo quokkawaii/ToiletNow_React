@@ -1,6 +1,7 @@
 import React from "react";
 import * as kakaoMapUtil from "../../utils/homeUtil/kakaoMapUtil";
 import { useMap } from "../../contexts/MapContext";
+import markerImg from "../../assets/Images/openMarker.png";
 
 export default function SearchLocation() {
   const { map, markers, setMarkers, toiletRef, fetchToilets } = useMap();
@@ -35,12 +36,19 @@ export default function SearchLocation() {
       // 새로운 마커들을 담을 임시 배열
       const newMarkers: kakao.maps.Marker[] = [];
 
+      // 마커 이미지를 생성합니다    
+      var markerImage = new kakao.maps.MarkerImage(
+        markerImg,
+        new kakao.maps.Size(40, 40)
+      );
+
       // 5. [검색 위치 마커] 검색한 지점(동네 중심)에 마커 하나 생성
       const centerMarker = new kakao.maps.Marker({
+        map: map,
         position: centerLatLng,
         title: `${searchTerm} 중심점`,
-        map: map,
         // 필요하다면 이미지를 다르게 해서 화장실 마커와 구분할 수 있습니다.
+        image: markerImage,
       });
       newMarkers.push(centerMarker);
 
@@ -48,9 +56,10 @@ export default function SearchLocation() {
       if (Array.isArray(toiletRef.current) && toiletRef.current.length > 0) {
         toiletRef.current.forEach((toilet: any) => {
           const marker = new kakao.maps.Marker({
+            map: map, //이 부분이 맵에 마커 찍는 부분
             position: new kakao.maps.LatLng(toilet.tlat, toilet.tlot),
             title: toilet.tname,
-            map: map, //이 부분이 맵에 마커 찍는 부분
+            image: markerImage,
           });
           newMarkers.push(marker);
         });
