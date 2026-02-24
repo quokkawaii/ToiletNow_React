@@ -221,4 +221,4 @@ distance: number;      // 거리 (예: 0.055165...)
   
 # 260224
 
-- filter 체크하는 부분을 input type="checkbox" name="filter"로 통일해서 만들기
+- filter 체크하는 부분을 input type="checkbox" name="filter"로 통일해서 만들기 : 나중에 필터 체크된 항목 검사할 때 사용
