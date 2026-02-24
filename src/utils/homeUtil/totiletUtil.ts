@@ -21,5 +21,7 @@ export async function getToiletByLatLon(lat: number, lng: number) {
     `http://127.0.0.1:8081/api/toilet/?lat=${lat}&lon=${lng}`,
   );
   const json = await response.json();
+  console.log(json);
+  
   return json;
 }

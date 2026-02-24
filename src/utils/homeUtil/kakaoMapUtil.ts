@@ -27,7 +27,6 @@ export function searchStation(
       region,
       (result, status) => {
         if (status == kakao.maps.services.Status.OK) {
-          console.log(result);
           resolve({
             lat: parseFloat(result[0].y),
             lng: parseFloat(result[0].x),
