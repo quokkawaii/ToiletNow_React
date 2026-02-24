@@ -26,3 +26,14 @@ body {
     내용물이 들어있지 않은 div도 space-between이 적용되게
   */
 }
+
+.btn-outline-primary {
+    --bs-btn-color: #0088FF;
+    --bs-btn-border-color: #0088FF;
+    --bs-btn-hover-bg: #0088FF;
+    --bs-btn-hover-border-color: #0088FF;
+    --bs-btn-active-bg: #0088FF;
+    --bs-btn-active-border-color: #0088FF;
+    --bs-btn-disabled-color: #0088FF;
+    --bs-btn-disabled-border-color: #0088FF;
+}

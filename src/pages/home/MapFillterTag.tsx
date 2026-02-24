@@ -74,7 +74,7 @@ export default function MapFilterTag({
         // Ref를 사용하므로 체크박스의 시각적 상태는 HTML 기본 동작(label htmlFor)에 의존
       />
       <label
-        className="btn btn-outline-dark btn-sm rounded-5 w-100 mt-2"
+        className="btn btn-outline-primary btn-sm rounded-5 w-100 mt-2"
         htmlFor={"btncheck" + idx}
       >
         <div
