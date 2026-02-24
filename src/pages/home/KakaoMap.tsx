@@ -11,9 +11,6 @@ export default function Map() {
       const startApp = async () => {
         try {
           const { lat, lng } = await kakaoMapUtil.currLocation(); // 현재 위치 위도경도
-          if (lat == null || lng == null) {
-            // await kakaoMapUtil.searchStation("서울");
-          }
           const currentMap = initMap(lat, lng); // 해당 값을 중심점으로 맵 생성
 
           if (currentMap) {

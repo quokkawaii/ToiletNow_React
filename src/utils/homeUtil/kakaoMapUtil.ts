@@ -1,17 +1,18 @@
 // 현재 위치 위도/ 경도 뽑기
 // navigator는 비동기인데 promise가 아니라서 promise로 만들어주고 async/await 해야되네
 export function currLocation(): Promise<{ lat: number; lng: number }> {
-  return new Promise((reslove, reject) => {
+  return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        reslove({
+        resolve({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         });
       },
       () => {
-        reject(alert("위치 권한이 거부되었습니다. 기준점: 서울"));
-        searchStation("서울");
+        // 위치 권한 거부 시 서울로 기본 위치 설정
+        alert("위치 권한이 거부되었습니다. 기준점을 서울로 설정합니다.");
+        resolve({ lat: 37.5665, lng: 126.9780 }); // 서울 기준
       },
     );
   });
