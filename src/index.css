@@ -3,6 +3,20 @@ body {
   height: 100vh;
 }
 
+#root{
+  height: 100%;
+}
+
+#root>div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#map {
+  flex: 1;
+}
+
 .logo-line {
   width: 34%;
   /*

@@ -217,3 +217,8 @@ distance: number;      // 거리 (예: 0.055165...)
 - 검색시 맵
 
 - 필터 입력시 맵
+  
+  
+# 260224
+
+- filter 체크하는 부분을 input type="checkbox" name="filter"로 통일해서 만들기

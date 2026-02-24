@@ -10,7 +10,8 @@ export function currLocation(): Promise<{ lat: number; lng: number }> {
         });
       },
       () => {
-        reject(alert("위치 권한이 거부되었습니다."));
+        reject(alert("위치 권한이 거부되었습니다. 기준점: 서울"));
+        searchStation("서울");
       },
     );
   });
