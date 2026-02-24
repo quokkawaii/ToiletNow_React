@@ -151,3 +151,7 @@ const pages = [
 # 260221
 
 - fillter 관련 이벤트 추가와 context 값 추가 해야할듯함
+
+# 260224
+
+- filter 체크하는 부분을 input type="checkbox" name="filter"로 통일해서 만들기
