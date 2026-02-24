@@ -41,7 +41,7 @@ export default function MapFillter() {
           svgClassName={item.svgClassName}
           path={item.path}
           svgTextContent={item.svgTextContent}
-          idx={index}
+          idx={index + 1}
         />
       ))}
     </div>

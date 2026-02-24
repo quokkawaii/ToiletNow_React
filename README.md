@@ -152,6 +152,73 @@ const pages = [
 
 - fillter 관련 이벤트 추가와 context 값 추가 해야할듯함
 
+# 260223
+
+- filter 클릭시 별점만 온오프 되는 버그 발생 =>
+  MapFillterTag의 id값과 htmlFor 이게 btncheck3으로 고정되어 있었음
+  map() 함수를 통해 index값을 넘겨주어 해결
+
+```typescript
+// before
+id="btncheck3"
+hrmlFor="btncheck3"
+
+// after
+id={"btncheck" + idx}
+htmlFor={"btncheck" + idx}
+```
+
+- 화장실 정보 타입 추가
+
+```typeScript
+export interface Toilet {
+tid: number;           // 화장실 ID (예: 30650)
+tname: string;         // 화장실 명칭 (예: "흥산에너지주유소")
+tregion: string;       // 동 단위 지역 (예: "신곡동")
+tregion2: string;      // 구/시 단위 지역 (예: "의정부시")
+taddr: string;         // 상세 주소 (예: "경기 의정부시 금신로 91")
+tlat: number;          // 위도 (예: 37.728992904149)
+tlot: number;          // 경도 (예: 127.063671245779)
+ttime: string;         // 이용 시간 (예: "상시")
+toptime: string | null; // 개방 시간 상세 (null 값이 들어올 수 있음)
+tdiaper: "Y" | "N";    // 기저귀 교환대 유무 (Y/N 리터럴 타입)
+tdisabled: "Y" | "N";  // 장애인용 화장실 유무
+talarm: "Y" | "N";     // 비상벨 유무
+tcctv: "Y" | "N";      // CCTV 유무
+distance: number;      // 거리 (예: 0.055165...)
+}
+
+```
+
+- 추후에 별점 추가하기, 별점 정보가 없네
+
+- 오늘 한거
+
+1. MapFilterTag.tsx 파일에 필터 기능 넣었음 (수정 필요)
+
+2. MapContext.tsx에 switches 추가했는데 변수 이름 맘에 안들어서 변경 예정
+
+- 해야 되는거
+
+1. 모듈화, 마커 관련이랑 상태 초기화하는것들 좀 유틸로 만들어놔야할듯함, 코드가 비슷한데 조금씩 다른게 불편해서 생각좀 해봐야할듯
+
+2. 현재 위치를 관련해서 신경써줘야하는게 있네, 동으로 이동시에는 현재 위치를 삭제하는걸로?
+
+3. setMarkers를 useRef로 만들고, Loading을 구현해보기 (로딩 화면이 따로 있어야함)
+
+4. 필터 초기화 및 검색 이동시 검색 기준점 삭제 (2번과 비슷한 내용)
+
+5. context 파일도 슬슬 어지러워 지고 있음, 전역 변수가 많을 수 밖에 없긴한데 좋은 방법 생각해보기
+
+6. 각각의 기능들 플로우 차트 생각해보기
+
+- 맵 초기
+
+- 검색시 맵
+
+- 필터 입력시 맵
+  
+  
 # 260224
 
 - filter 체크하는 부분을 input type="checkbox" name="filter"로 통일해서 만들기
