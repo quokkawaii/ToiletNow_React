@@ -64,7 +64,6 @@ export default function Map() {
     <div
       id="map"
       className="shadow-sm rounded mx-auto"
-      style={{ width: "100vh", height: "100vh" }}
     ></div>
   );
 }
