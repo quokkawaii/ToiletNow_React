@@ -3,11 +3,11 @@ body {
   height: 100vh;
 }
 
-#root{
+#root {
   height: 100%;
 }
 
-#root>div {
+#root > div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -28,12 +28,38 @@ body {
 }
 
 .btn-outline-primary {
-    --bs-btn-color: #0088FF;
-    --bs-btn-border-color: #0088FF;
-    --bs-btn-hover-bg: #0088FF;
-    --bs-btn-hover-border-color: #0088FF;
-    --bs-btn-active-bg: #0088FF;
-    --bs-btn-active-border-color: #0088FF;
-    --bs-btn-disabled-color: #0088FF;
-    --bs-btn-disabled-border-color: #0088FF;
+  --bs-btn-color: #0088ff;
+  --bs-btn-border-color: #0088ff;
+  --bs-btn-hover-bg: #0088ff;
+  --bs-btn-hover-border-color: #0088ff;
+  --bs-btn-active-bg: #0088ff;
+  --bs-btn-active-border-color: #0088ff;
+  --bs-btn-disabled-color: #0088ff;
+  --bs-btn-disabled-border-color: #0088ff;
+}
+
+/* 로딩 */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* 부모 높이에 맞춤 */
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db; /* 프로젝트 메인 색상으로 변경 */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MapFillterTag from "./MapFillterTag";
 
 export default function MapFillter() {
@@ -29,7 +30,7 @@ export default function MapFillter() {
       svgTextContent: "장애인용",
     },
   ];
-
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <div
       id="filterContainer"
@@ -42,6 +43,8 @@ export default function MapFillter() {
           path={item.path}
           svgTextContent={item.svgTextContent}
           idx={index + 1}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
         />
       ))}
     </div>

@@ -57,10 +57,5 @@ export default function Map() {
     });
   }, []); // useEffect로 맨 처음 실행되었을때만 맵을 그림
 
-  return (
-    <div
-      id="map"
-      className="shadow-sm rounded mx-auto"
-    ></div>
-  );
+  return <div id="map" className="shadow-sm rounded mx-auto"></div>;
 }
