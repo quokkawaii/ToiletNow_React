@@ -1,7 +1,7 @@
 // 현재 위치 위도/ 경도 뽑기
 // navigator는 비동기인데 promise가 아니라서 promise로 만들어주고 async/await 해야되네
 export function currLocation(): Promise<{ lat: number; lng: number }> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         resolve({
@@ -55,8 +55,12 @@ export function createkakaoMap(lat: number, lng: number) {
   return new kakao.maps.Map(container, options);
 }
 
-// 위치 이동
+// 위치 이동, 수정 필요함 
 export const moveTo = (map: kakao.maps.Map, lat: number, lon: number) => {
   const locPosition = new kakao.maps.LatLng(lat, lon);
   map.panTo(locPosition);
 };
+
+// 위치 이동 => .panto()와 .setCenter()가 있는데
+// 네이버 지도는 .setCenter()랑 비슷하게 해놔서 그냥 .setCenter로
+// 클라이언트에 과부화가 안온다고 생각들면 .panto로 변경 예정 

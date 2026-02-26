@@ -238,6 +238,10 @@ const markers = React.RefObject<kakao.maps.Marker[]>([]); // 이거맞나
 // 여러개의 마커를 동시에 빠르게 누르면 클릭 동작이 십히는 경우가 있음
 // 필터는 정상작동되어 눌린 표시가 되지만 실제 값은 false가 되버림
 
+// + 이 과정에서 initMap도 삭제 또는 수정할듯 
+// 싱글톤 패턴으로 맵을 하나만 유지라는데 사실 맵을 useRef로 만들면 하나만 유지됨, 새로운 객체 생성만 막으면됨 if(map) return 이런식 
+// + 화장실 필터 클릭부분 이름을 명확하게 바꾸기 
+
 // 2
 const [isLoading, setIsLoading] = useState(false);
 // 해당 값을 kakaomap,  filter,  search에 넣어줘야됨
@@ -374,3 +378,11 @@ const setMapCenter(map,lat,lng) => {
 2. setMarkers() 와 createMaker 이 두개가 겹친다는걸 알았음 createMarker에 마커 찍는 기능을 빼도 될듯함
 
 3. 막누르면 업데이트 되기전에 눌러져서 버그 생김 (로딩 추가하면 될듯?)
+
+# 메모
+
+- useState를 써도 렌더는 한번만됨
+
+- useState에 파생된 값을 넣지마라 => 상태값이 꼬이는 주 원인임
+
+- 원본값을 꺼내서 계산하는 방식이 옳음 
