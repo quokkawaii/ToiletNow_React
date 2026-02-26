@@ -12,7 +12,7 @@ export function currLocation(): Promise<{ lat: number; lng: number }> {
       () => {
         // 위치 권한 거부 시 서울로 기본 위치 설정
         alert("위치 권한이 거부되었습니다. 기준점을 서울로 설정합니다.");
-        resolve({ lat: 37.5665, lng: 126.9780 }); // 서울 기준
+        resolve({ lat: 37.5665, lng: 126.978 }); // 서울 기준
       },
     );
   });
@@ -55,12 +55,16 @@ export function createkakaoMap(lat: number, lng: number) {
   return new kakao.maps.Map(container, options);
 }
 
-// 위치 이동, 수정 필요함 
-export const moveTo = (map: kakao.maps.Map, lat: number, lon: number) => {
-  const locPosition = new kakao.maps.LatLng(lat, lon);
-  map.panTo(locPosition);
-};
+// 위치 이동, 수정 필요함
+// export const moveTo = (map: kakao.maps.Map, lat: number, lon: number) => {
+//   const locPosition = new kakao.maps.LatLng(lat, lon);
+//   map.panTo(locPosition);
+// };
 
 // 위치 이동 => .panto()와 .setCenter()가 있는데
 // 네이버 지도는 .setCenter()랑 비슷하게 해놔서 그냥 .setCenter로
-// 클라이언트에 과부화가 안온다고 생각들면 .panto로 변경 예정 
+// 클라이언트에 과부화가 안온다고 생각들면 .panto로 변경 예정
+export const changeCenter = (map: kakao.maps.Map, lat: number, lng: number) => {
+  const centerLatLng = new kakao.maps.LatLng(lat, lng);
+  map.setCenter(centerLatLng);
+};
