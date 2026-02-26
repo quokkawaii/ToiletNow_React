@@ -15,6 +15,16 @@ export type Toilet = {
   distance: number; // 거리 (예: 0.055165...)
 };
 
+// toiletOption = MapContext.tsx에 있음
+// 근데 여기 파일까지 export 되는지 몰라서 일단 하나 더 만듬
+type ToiletOption = {
+  별점: boolean;
+  기저귀: boolean;
+  안심: boolean;
+  장애인용: boolean;
+  [key: string]: boolean;
+};
+
 // 주변 화장실 정보 가져오기
 export async function getToiletByLatLon(lat: number, lng: number) {
   const response = await fetch(
@@ -25,3 +35,28 @@ export async function getToiletByLatLon(lat: number, lng: number) {
 
   return json;
 }
+
+// 화장실 필터하기
+// 리턴은 필터된 화장실들!
+export const getFilterToilet = (
+  toilet: Toilet[],
+  toiletOption: ToiletOption,
+) => {
+  const filteredToilet: Toilet[] = toilet.filter((t) => {
+    const {
+      tdiaper: 기저귀,
+      tdisabled: 장애인용,
+      talarm: 알람,
+      tcctv: 보안,
+    } = t;
+
+    // toilet에서 가져온 값 = 'Y', 'N' 둘중 하나임
+    // 해당 화장실에서 Y인 값과 toiletOption에서 true인거만 마커 생성
+
+    if (toiletOption.기저귀 && 기저귀 != "Y") return false;
+    if (toiletOption.장애인용 && 장애인용 !== "Y") return false;
+    if (toiletOption.안심 && 알람 !== "Y" && 보안 !== "Y") return false;
+    return true;
+  });
+  return filteredToilet;
+};

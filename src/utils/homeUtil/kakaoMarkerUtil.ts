@@ -1,4 +1,4 @@
-import {markerImg} from "../../assets/Images"
+import { markerImg, userMarker } from "../../assets/Images";
 
 // 마커 찍기
 export function createMarker(
@@ -9,9 +9,12 @@ export function createMarker(
 ) {
   let markerPosition = new kakao.maps.LatLng(lat, lng);
 
+  // 만약 title의 이름이 내 위치일때 =>
+  const img = title == "내 위치" ? userMarker : markerImg;
+
   // 마커 이미지를 생성합니다
   var markerImage = new kakao.maps.MarkerImage(
-    markerImg,
+    img,
     new kakao.maps.Size(40, 40),
   );
 
@@ -28,3 +31,8 @@ export function createMarker(
   // marker.setMap(map);
   return marker;
 }
+
+// 마커의 값 초기화
+export const cleanMarkers = (markers: kakao.maps.Marker[]) => {
+  markers.forEach((marker) => marker.setMap(null));
+};
