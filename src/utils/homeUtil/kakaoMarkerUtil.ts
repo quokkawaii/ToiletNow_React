@@ -1,4 +1,4 @@
-import markerImg from "../../assets/images/openMarker.png";
+import {markerImg} from "../../assets/Images"
 
 // 마커 찍기
 export function createMarker(
