@@ -22,6 +22,6 @@ export async function getToiletByLatLon(lat: number, lng: number) {
   );
   const json = await response.json();
   console.log(json);
-  
+
   return json;
 }
