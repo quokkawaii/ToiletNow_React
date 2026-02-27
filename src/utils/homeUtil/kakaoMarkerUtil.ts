@@ -24,6 +24,7 @@ export function createMarker(
     position: markerPosition,
     title: title, // 마커에 마우스 호버했을때 title이 나옴
     image: markerImage, // 마커 이미지
+    zIndex: img==userMarker ? 99 : 1,
     clickable: true, // 클릭이벤트 설정
   });
 
