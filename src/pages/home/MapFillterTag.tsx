@@ -76,6 +76,8 @@ export default function MapFilterTag({
       return;
     }
 
+    console.log(e.currentTarget.textContent);
+
     // 로딩 시작
     setIsLoading(true);
 
@@ -96,7 +98,6 @@ export default function MapFilterTag({
         className={`btn-check ${svgClassName}`}
         id={"btncheck" + idx}
         autoComplete="off"
-        // Ref를 사용하므로 체크박스의 시각적 상태는 HTML 기본 동작(label htmlFor)에 의존
       />
       <label
         className={`btn btn-outline-primary btn-sm rounded-5 w-100 mt-2 ${

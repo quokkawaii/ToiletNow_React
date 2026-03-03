@@ -36,7 +36,7 @@ export default function MapFillter() {
     >
       {fillterSvg.map((item, index) => (
         <MapFillterTag
-          key={index}
+          key={item.svgTextContent + index}
           svgClassName={item.svgClassName}
           path={item.path}
           svgTextContent={item.svgTextContent}
