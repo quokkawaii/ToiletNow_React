@@ -1,4 +1,5 @@
 // 현재 위치 위도/ 경도 뽑기
+// ≤
 // navigator는 비동기인데 promise가 아니라서 promise로 만들어주고 async/await 해야되네
 export function currLocation(): Promise<{ lat: number; lng: number }> {
   return new Promise((resolve) => {

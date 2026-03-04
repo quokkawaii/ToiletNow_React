@@ -53,10 +53,10 @@ export const renderKakaoMap = (
 };
 
 // 일단 임시로 여기에 util 함수 생성
-const getCurrMarkerArr = (currToilet: Toilet[], newMap: kakao.maps.Map) => {
+const getCurrMarkerArr = (currToilet: Toilet[], map: kakao.maps.Map) => {
   const currMarkers: kakao.maps.Marker[] = [];
   currToilet.forEach((toilet: Toilet) => {
-    const marker = createMarker(newMap, toilet.tlat, toilet.tlot, toilet.tname);
+    const marker = createMarker(map, toilet.tlat, toilet.tlot, toilet.tname);
     currMarkers.push(marker);
   });
   return currMarkers;

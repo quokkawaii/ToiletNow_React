@@ -175,3 +175,44 @@ export default function KakaoMap() {
   );
 }
 ```
+
+# 새로운 아키텍처
+
+- MapContext API
+
+- MapContext.provider()
+
+- Utils 
+
+1. toiletUtil.ts
+
+2. kakaoMapUtil.ts
+
+3. kakaoMarkerUtil.ts
+
+## 결과
+
+- MapContext.provider()를 기준으로 전역변수와 유틸 함수들을 조합하는 함수를 export 해주기
+
+- kakaoMap 기준으로 어떤식의 코드 변화가 있는지 정리
+
+``` tsx
+// kakaoMap.tsx 
+
+// before
+const newMap = kakaoMapUtil.createkakaoMap(lat, lng); // 맵 객체 생성
+setMap(newMap); // 맵 객체 상태 업데이트  
+
+// after 
+const newMap : kakao.maps.Maps = changeStateMap(lat, lng); 
+
+// MapContext.tsx
+const changeStateMap = (lat :number, lng :number) => {
+  const map : kakao.maps.Map = kakaoMapUtil.createkakaoMap(lat, lng); // 맵 객체 생성
+  setMap(newMap); // 맵 객체 상태 업데이트
+  return map;
+}
+```
+
+- README.md -> 우클릭 -> 미리 보기 열기 눌러주세요
+![아키텍처](./src/assets/아키텍처.png)

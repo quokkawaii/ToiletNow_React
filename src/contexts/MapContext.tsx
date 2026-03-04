@@ -5,6 +5,7 @@ import {
   type ReactNode,
 } from "react";
 import { type Toilet } from "../utils/homeUtil/totiletUtil";
+import { createkakaoMap } from "../utils/homeUtil/kakaoMapUtil";
 
 export type ToiletOption = {
   별점: boolean;
@@ -48,13 +49,20 @@ export function MapProvider({ children }: { children: ReactNode }) {
   const [currLocMark, setCurrLocMark] = useState<kakao.maps.Marker | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const changeStateMap = (lat: number, lng: number) => {
+    const newMap: kakao.maps.Map = createkakaoMap(lat, lng); // 맵 객체 생성
+    setMap(newMap);
+    return newMap;
+  }
+
   const value = {
     map, setMap,
     markers, setMarkers,
     toilet, setToilet,
     toiletOption, setToiletOption,
     currLocMark, setCurrLocMark,
-    isLoading, setIsLoading
+    isLoading, setIsLoading,
+    changeStateMap
   };
 
   return (
