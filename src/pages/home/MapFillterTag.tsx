@@ -34,14 +34,11 @@ export default function MapFilterTag({
 
     // 맵에 올라와 있는 마커들 지우기
     if (markers && markers.length > 0) {
-      cleanMarkers(markers);
+      cleanMarkers(markers); // 여기서 제대로 안지워 지나 보다
+      // 제거한뒤 markers 비워주기
+      setMarkers([]);
     }
 
-    // 제거한뒤 markers 비워주기
-    setMarkers([]);
-
-    // 현재 toiletOption값을 기준으로 화장실 정보 걸러주기
-    // 현재 상태값으로 진행해야 안꼬일듯
     const currToiletOption: ToiletOption = toiletOption; // context의 값을 가져오기
 
     currToiletOption[svgTextContent] = !currToiletOption[svgTextContent]; // 가져온값을 논리부정
@@ -57,15 +54,19 @@ export default function MapFilterTag({
     );
 
     // 현재 위치가 있을경우 = SearchLocation의 상태가 아닐경우
-    // 로직을 짤려했는데 Mapcontext의 currLocMark값이 있는 이상 계속 맵에 표시될듯?
-    // 안나와서 출력해주기
     if (currLocMark != null) {
       currLocMark.setMap(map);
       newMarkers.push(currLocMark);
     }
 
+    console.log(newMarkers);
+    console.log(markers);
+
     // 상태 업데이트 (화면 그리기)
     setMarkers(newMarkers);
+
+    // newMarkers로 맵에 마커를 찍는 함수를 만들어야할듯
+    // markers를 빈 배열로 만들어도 제대로 안비워짐
   };
 
   // 2. 클릭 핸들러
@@ -85,8 +86,6 @@ export default function MapFilterTag({
 
     updateMarkers();
 
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
     // 로딩 종료
     setIsLoading(false);
   };
@@ -100,8 +99,9 @@ export default function MapFilterTag({
         autoComplete="off"
       />
       <label
-        className={`btn btn-outline-primary btn-sm rounded-5 w-100 mt-2 ${isLoading ? "pe-none opacity-50" : ""
-          }`}
+        className={`btn btn-outline-primary btn-sm rounded-5 w-100 mt-2 ${
+          isLoading ? "pe-none opacity-50" : ""
+        }`}
         htmlFor={"btncheck" + idx}
       >
         <div

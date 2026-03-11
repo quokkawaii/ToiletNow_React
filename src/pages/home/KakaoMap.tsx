@@ -1,34 +1,54 @@
 import { useEffect } from "react";
 import { useMap } from "../../contexts/MapContext";
 import CurrLocBtn from "./CurrLocBtn";
-import { renderKakaoMap } from "./mapRender";
 import Loading from "../../componunts/common/Loading";
 import { type Toilet } from "../../utils/homeUtil/totiletUtil";
 import { currLocation } from "../../utils/homeUtil/kakaoMapUtil";
 
 export default function KakaoMap() {
   const {
+    setMarkers,
     isLoading,
     setIsLoading,
     updateMap,
     updateToilet,
     updateCurrLocation,
-    updateMarkers
+    updateMarkers,
   } = useMap();
 
-  const kakaoMapStart = async () => {
+  const kakaoMapStart = () => {
     kakao.maps.load(async () => {
       // 로컬 변수 세팅 시작
       const { lat, lng } = await currLocation(); // 현재 위치의 Lat, Lng
-      const currMarkerList: kakao.maps.Marker[] = []; // 현재 마커들의 값을 담을 변수 
       const currToiletList: Toilet[] | null = await updateToilet(lat, lng); // 화장실 정보 업데이트
       // 로컬 변수 세팅 종료
 
+      // 카카오 맵 객체 생성 시작
+      const newMap = updateMap(lat, lng);
+      // 카카오 맵 객체 생성 종료
 
+      // 현재 위치 상태 업데이트 시작
+      const currMarker: kakao.maps.Marker | null = !newMap
+        ? null
+        : updateCurrLocation(newMap, lat, lng);
+      // 현재 위치 상태 업데이트 종료
 
+      // 모든 마커 상태 업데이트
+      if (currToiletList != null && newMap != null) {
+        // 귀찮게 계속 null처리 해줘야되네
+        const currMarkerList: kakao.maps.Marker[] | null = updateMarkers(
+          currToiletList,
+          newMap,
+        );
+        if (currMarkerList != null && currMarker != null) {
+          currMarkerList.push(currMarker);
+        }
+        setMarkers(currMarkerList);
+      }
 
+      setIsLoading(false);
 
-
+      // 모든 마커 상태 업데이트 종료
     });
   };
 
@@ -36,10 +56,11 @@ export default function KakaoMap() {
     try {
       setIsLoading(true);
 
+      kakaoMapStart();
     } catch (error) {
       console.error(error);
     }
-  }, []); // useEffect로 맨 처음 실행되었을때만 맵을 그림
+  }, []);
 
   return (
     <div
@@ -53,6 +74,5 @@ export default function KakaoMap() {
       {/* 2. isLoading일 때만 그 위에 덮어씌우는 로딩 레이어 */}
       {isLoading && <Loading />}
     </div>
-
   );
 }

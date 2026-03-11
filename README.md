@@ -182,7 +182,7 @@ export default function KakaoMap() {
 
 - MapContext.provider()
 
-- Utils 
+- Utils
 
 1. toiletUtil.ts
 
@@ -196,23 +196,51 @@ export default function KakaoMap() {
 
 - kakaoMap 기준으로 어떤식의 코드 변화가 있는지 정리
 
-``` tsx
-// kakaoMap.tsx 
+```tsx
+// kakaoMap.tsx
 
 // before
 const newMap = kakaoMapUtil.createkakaoMap(lat, lng); // 맵 객체 생성
-setMap(newMap); // 맵 객체 상태 업데이트  
+setMap(newMap); // 맵 객체 상태 업데이트
 
-// after 
-const newMap : kakao.maps.Maps = changeStateMap(lat, lng); 
+// after
+const newMap: kakao.maps.Maps = changeStateMap(lat, lng);
 
 // MapContext.tsx
-const changeStateMap = (lat :number, lng :number) => {
-  const map : kakao.maps.Map = kakaoMapUtil.createkakaoMap(lat, lng); // 맵 객체 생성
+const changeStateMap = (lat: number, lng: number) => {
+  const map: kakao.maps.Map = kakaoMapUtil.createkakaoMap(lat, lng); // 맵 객체 생성
   setMap(newMap); // 맵 객체 상태 업데이트
   return map;
-}
+};
 ```
 
 - README.md -> 우클릭 -> 미리 보기 열기 눌러주세요
-![아키텍처](./src/assets/아키텍처.png)
+  ![아키텍처](./src/assets/아키텍처.png)
+
+# 20260312
+
+- kakaoMap이랑 MapFilter를 봤을때 뭐가 더 이해하기 쉬운건지 물어보기 (주석을 지울까?)
+
+```tsx
+// 필터 & 화장실 정보 갱신 & 마커 생성
+
+// 1. 화장실 리스트와 화장실 필터를 입력 받는다, (기존 화장실 정보를 가져올때도)
+// 2. 개방 시간과 현재 시간을 비교해서 컬러도 바꿔줘야 되네 (마커 생성하는 부분 수정)
+// 3. if (toiletOption.기저귀 && 기저귀 != "Y") return false; 이게 true인 것들 출력 => 상시 필터 유지
+// 4. 필터가 항상 최신값이여야 되기떄문에 useState대신 하나의 객체를 만들어 그 값을 넣어서 필터하기
+
+// 현재 위치
+
+// 현재 위치 버튼 테두리 없애기
+
+// 현재 위치가 있을 경우 currLocMark != null => 파란색
+// 현재 위치가 없을 경우 currLocMark == null => 검정색
+
+// 현재 위치 클릭시
+// currLocMark == null인 경우에만 현재 위치 불러오는 코드를 만들기
+// currLocMark != null인 경우 현재 위치로 이동
+```
+
+- 업데이트 내용
+
+1. kakaoMap에 저번에 만든 아키텍처 구조를 적용시켰음, 가독성 조금 좋아진거 말곤 뭐 없는듯함
