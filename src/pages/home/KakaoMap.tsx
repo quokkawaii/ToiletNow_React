@@ -3,28 +3,39 @@ import { useMap } from "../../contexts/MapContext";
 import CurrLocBtn from "./CurrLocBtn";
 import { renderKakaoMap } from "./mapRender";
 import Loading from "../../componunts/common/Loading";
+import { type Toilet } from "../../utils/homeUtil/totiletUtil";
+import { currLocation } from "../../utils/homeUtil/kakaoMapUtil";
 
 export default function KakaoMap() {
   const {
-    setMap,
-    setMarkers,
-    setToilet,
     isLoading,
     setIsLoading,
-    setCurrLocMark,
+    updateMap,
+    updateToilet,
+    updateCurrLocation,
+    updateMarkers
   } = useMap();
+
+  const kakaoMapStart = async () => {
+    kakao.maps.load(async () => {
+      // 로컬 변수 세팅 시작
+      const { lat, lng } = await currLocation(); // 현재 위치의 Lat, Lng
+      const currMarkerList: kakao.maps.Marker[] = []; // 현재 마커들의 값을 담을 변수 
+      const currToiletList: Toilet[] | null = await updateToilet(lat, lng); // 화장실 정보 업데이트
+      // 로컬 변수 세팅 종료
+
+
+
+
+
+
+    });
+  };
 
   useEffect(() => {
     try {
       setIsLoading(true);
 
-      renderKakaoMap(
-        setMap,
-        setCurrLocMark,
-        setToilet,
-        setMarkers,
-        setIsLoading,
-      );
     } catch (error) {
       console.error(error);
     }
@@ -42,5 +53,6 @@ export default function KakaoMap() {
       {/* 2. isLoading일 때만 그 위에 덮어씌우는 로딩 레이어 */}
       {isLoading && <Loading />}
     </div>
+
   );
 }

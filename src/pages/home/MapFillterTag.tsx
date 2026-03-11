@@ -100,9 +100,8 @@ export default function MapFilterTag({
         autoComplete="off"
       />
       <label
-        className={`btn btn-outline-primary btn-sm rounded-5 w-100 mt-2 ${
-          isLoading ? "pe-none opacity-50" : ""
-        }`}
+        className={`btn btn-outline-primary btn-sm rounded-5 w-100 mt-2 ${isLoading ? "pe-none opacity-50" : ""
+          }`}
         htmlFor={"btncheck" + idx}
       >
         <div

@@ -1,3 +1,5 @@
+import { createMarker } from "./kakaoMarkerUtil";
+
 export type Toilet = {
   tid: number; // 화장실 ID (예: 30650)
   tname: string; // 화장실 명칭 (예: "흥산에너지주유소")
@@ -60,3 +62,11 @@ export const getFilterToilet = (
   });
   return filteredToilet;
 };
+
+
+// 화장실 객체 하나랑 map을 받아서 마커 객체 생성하는 함수
+export const getMarkerObj = (toilet: Toilet, map: kakao.maps.Map) => {
+  const { tlat, tlot, tname } = toilet;
+  const marker = createMarker(map, tlat, tlot, tname);
+  return marker;
+}
