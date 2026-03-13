@@ -7,10 +7,15 @@ body {
   height: 100%;
 }
 
-#root > div {
+#root>div {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+button {
+  border: none;
+  background: none;
 }
 
 #map {
@@ -43,14 +48,16 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* 부모 높이에 맞춤 */
+  height: 100%;
+  /* 부모 높이에 맞춤 */
 }
 
 .spinner {
   width: 50px;
   height: 50px;
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #3498db; /* 프로젝트 메인 색상으로 변경 */
+  border-top: 5px solid #3498db;
+  /* 프로젝트 메인 색상으로 변경 */
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -59,6 +66,7 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -81,15 +89,15 @@ body {
   margin: 2px 0;
 }
 
-#markerStateBox > div:first-child {
+#markerStateBox>div:first-child {
   color: #08a300;
 }
 
-#markerStateBox > div:nth-child(2) {
+#markerStateBox>div:nth-child(2) {
   color: #999999;
 }
 
-#markerStateBox > div:nth-child(3) {
+#markerStateBox>div:nth-child(3) {
   color: #0088ff;
 }
 
@@ -111,3 +119,536 @@ body {
 #gpsBtn:active {
   background-color: #f2f2f2;
 }
+
+/* login css start */
+
+/* basic style */
+:root {
+  --primary-blue: #0088FF;
+  --text-main: #000000;
+  --text-sub: #90a4ae;
+  --bg-gray: #f5f7fa;
+  --white: #ffffff;
+}
+
+/* 로그인 랩퍼 */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+  /* 모바일에서 양옆 여백 */
+}
+
+/* 로그인 카드 */
+.login-card {
+  background: #fff;
+  padding: 30px;
+  max-width: 420px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  text-align: center;
+}
+
+/* 로고 & 뒤로가기 버튼 */
+.logo-section {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.logo-section>a {
+  position: absolute;
+  top: -2px;
+  left: 0;
+}
+
+.logo-section h1 {
+  height: 30px;
+  text-align: center;
+}
+
+.logo-section h1 a img {
+  width: 90px;
+  vertical-align: text-top;
+  margin-top: 5px;
+}
+
+/* 로그인 문구 */
+.top-nav h2 {
+  font-size: 2rem;
+}
+
+/* 안내 문구 */
+.sub-text {
+  font-size: 0.8rem;
+  word-break: keep-all;
+  /* 단어째 줄바꿈 */
+  margin: .8rem 0 1.8rem;
+}
+
+/* 입력창 그룹 */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.login-form {
+  margin: 0;
+}
+
+.input-group input {
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  border: 1px solid #eceff1;
+  border-radius: 12px;
+  background-color: var(--bg-gray);
+  box-sizing: border-box;
+  font-size: .9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.input-group input:focus {
+  border: 1.5px solid var(--primary-blue);
+}
+
+.input-group input::placeholder {
+  font-weight: normal;
+  font-size: .9rem;
+  color: #aaa;
+}
+
+.btn-login-submit {
+  width: 100%;
+  height: 50px;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 비밀번호 찾기 문구 */
+.find-password {
+  margin: 20px 0;
+}
+
+.find-password a {
+  text-decoration: none;
+  font-size: .8rem;
+  color: #999;
+}
+
+/* 회원가입 링크 */
+.auth-links {
+  margin-top: 25px;
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.auth-links a {
+  color: var(--primary-blue);
+}
+
+.back-to-main {
+  margin-top: 20px;
+  font-size: 0.85rem;
+}
+
+.back-to-main a {
+  color: var(--text-sub);
+  text-decoration: underline;
+}
+
+/* 비밀번호 그룹 내 아이콘 배치 */
+.password-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-group input {
+  width: 100%;
+  padding-right: 45px;
+  /* 아이콘 위치 */
+}
+
+#togglePassword {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #999;
+  font-size: 18px;
+}
+
+/* 부모: 아이콘 배치의 울타리 역할 */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+/* 입력창 우측에 아이콘이 들어갈 공간 비움 */
+.password-container input {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  /* 오른쪽 padding을 충분히 */
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* 비밀번호 아이콘 입력창에 고정 */
+#togglePw {
+  position: absolute;
+  right: 15px;
+  /* 오른쪽 끝에서 15px 안쪽으로 */
+  top: 50%;
+  /* 세로 중앙 배치 시작 */
+  transform: translateY(-50%);
+  /* 정확한 중앙 정렬 */
+  width: 20px;
+  /* 아이콘 크기 조절 */
+  height: auto;
+  cursor: pointer;
+  z-index: 5;
+  /* input보다 위에 보이게 */
+  opacity: 0.5;
+  /* 기본 투명도 (선택) */
+}
+
+/* 구글 버튼 스타일 */
+.btn-google {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #f1f5f9;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: .9rem;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border: 1px solid #eceff1;
+  color: #666;
+}
+
+.btn-google img {
+  width: 18px;
+}
+
+/* 로그인 버튼 구분 */
+.divider-text {
+  display: flex;
+  /* 가로 정렬 */
+  align-items: center;
+  width: 100%;
+  margin: 24px 0;
+  color: #999;
+  font-size: .9rem;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: "";
+  flex-grow: 1;
+  /* 선이 가용한 공간을 모두 채움 */
+  height: 1px;
+  /* 선의 높이 */
+  background: #e0e0e0;
+}
+
+/* 글자 양옆에 간격 */
+.divider-text::before {
+  margin-right: 15px;
+}
+
+.divider-text::after {
+  margin-left: 15px;
+}
+
+/* login css end */
+
+/* changePassword css start */
+
+/* 모바일 화면 컨테이너 */
+.mobile-container {
+  width: 100%;
+  /* max-width: 400px; */
+  height: 100vh;
+  /* 전체 높이 */
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+/* 상단 헤더 */
+.top-header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 16px;
+}
+
+/* 메인 콘텐츠 영역 */
+.content-area {
+  padding: 20px 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 타이틀 섹션 */
+.title-section {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0088FF;
+  margin-bottom: 12px;
+}
+
+.page-desc {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+}
+
+/* 폼 스타일 */
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ⭐ 입력창 감싸는 박스 (중요: relative) */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* 입력창 스타일 */
+.input-wrapper input {
+  width: 100%;
+  height: 52px;
+  padding: 0 45px 0 16px;
+  /* 오른쪽 여백은 아이콘 자리 */
+  background-color: #F2F4F6;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #333;
+  outline: none;
+}
+
+.input-wrapper input:focus {
+  background-color: #E8F3FF;
+  /* 포커스 시 살짝 푸른색 */
+}
+
+.input-wrapper input::placeholder {
+  color: #cecece;
+}
+
+/* ⭐ 눈 아이콘 스타일 (중요: absolute) */
+.eye-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  /* 수직 중앙 정렬 */
+  width: 20px;
+  /* 아이콘 크기 고정 */
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.5;
+  /* 약간 흐리게 */
+}
+
+/* 확인 버튼 */
+.btn-primary {
+  width: 100%;
+  height: 52px;
+  margin: 0;
+  margin-top: 50px;
+  background-color: #BCE0FD;
+  /* 비활성 색상 */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: not-allowed;
+  transition: 0.2s;
+}
+
+/* 버튼 활성화 상태 (JS에서 disabled 풀었을 때) */
+.btn-primary:not(:disabled) {
+  background-color: #0088FF;
+  cursor: pointer;
+}
+
+/* 버튼 클릭 시 살짝 작아지는 효과 */
+.btn-primary:not(:disabled):active {
+  background-color: #007be6;
+  scale: calc(0.98);
+}
+
+/* changePassword css  end*/
+
+/* resetPassword css start */
+/* 리셋 박스(랩퍼 역할) */
+.reset-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+/* 로그인 박스 내용물 */
+.auth-box {
+  background: #fff;
+  padding: 30px;
+  max-width: 420px;
+  box-sizing: border-box;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  text-align: center;
+}
+
+/* 로고 & 뒤로가기 버튼 */
+.logo-section {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.logo-section>a {
+  position: absolute;
+  top: -2px;
+  left: 0;
+}
+
+.logo-section h1 {
+  height: 30px;
+  text-align: center;
+}
+
+.logo-section h1 a img {
+  width: 90px;
+  vertical-align: text-top;
+  margin-top: 5px;
+}
+
+/* 페이지 제목 */
+h2 {
+  color: #0088FF;
+  font-size: 2rem;
+}
+
+.page-desc {
+  font-size: 0.8rem;
+  word-break: keep-all;
+  color: #999;
+  margin: .8rem 0 1.8rem;
+}
+
+/* 입력창 */
+.input-wrapper {
+  margin-bottom: 15px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  border: 1px solid #eceff1;
+  border-radius: 12px;
+  background-color: #f5f7fa;
+  box-sizing: border-box;
+  font-size: .9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.input-wrapper input:focus {
+  border: 1.5px solid var(--primary-color);
+}
+
+.input-wrapper input::placeholder {
+  font-weight: normal;
+  font-size: .9rem;
+  color: #aaa;
+}
+
+.btn-primary {
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 40px;
+}
+
+.btn-primary:active {
+  background-color: #1976D2;
+}
+
+
+
+/* 비밀번호 그룹 내 아이콘 배치 */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+/* 입력창 우측에 아이콘이 들어갈 공간 비움 */
+.password-container input {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  /* 오른쪽 padding을 충분히 */
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* 비밀번호 아이콘 입력창에 고정 */
+.eye-icon {
+  position: absolute;
+  right: 15px;
+  /* 오른쪽 끝에서 15px 안쪽으로 */
+  top: 50%;
+  /* 세로 중앙 배치 시작 */
+  transform: translateY(-50%);
+  /* 정확한 중앙 정렬 */
+  width: 20px;
+  /* 아이콘 크기 조절 */
+  height: auto;
+  cursor: pointer;
+  z-index: 5;
+  /* input보다 위에 보이게 */
+  opacity: 0.5;
+  /* 기본 투명도 (선택) */
+}
+
+/* resetPassword css end */

@@ -7,12 +7,12 @@ export default function Header() {
   const isMain: boolean = location.pathname == "/";
 
   return (
-    <>
+    <div>
       <div className="d-flex space-between">
         {!isMain && <ArrowBack></ArrowBack>}
         <HomeBtn></HomeBtn>
-        <Outlet />
       </div>
-    </>
+      <Outlet />
+    </div>
   );
 }
