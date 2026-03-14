@@ -7,7 +7,7 @@ body {
   height: 100%;
 }
 
-#root>div {
+#root > div {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -89,15 +89,15 @@ button {
   margin: 2px 0;
 }
 
-#markerStateBox>div:first-child {
+#markerStateBox > div:first-child {
   color: #08a300;
 }
 
-#markerStateBox>div:nth-child(2) {
+#markerStateBox > div:nth-child(2) {
   color: #999999;
 }
 
-#markerStateBox>div:nth-child(3) {
+#markerStateBox > div:nth-child(3) {
   color: #0088ff;
 }
 
@@ -124,7 +124,7 @@ button {
 
 /* basic style */
 :root {
-  --primary-blue: #0088FF;
+  --primary-blue: #0088ff;
   --text-main: #000000;
   --text-sub: #90a4ae;
   --bg-gray: #f5f7fa;
@@ -159,7 +159,7 @@ button {
   margin-bottom: 2rem;
 }
 
-.logo-section>a {
+.logo-section > a {
   position: absolute;
   top: -2px;
   left: 0;
@@ -186,7 +186,7 @@ button {
   font-size: 0.8rem;
   word-break: keep-all;
   /* 단어째 줄바꿈 */
-  margin: .8rem 0 1.8rem;
+  margin: 0.8rem 0 1.8rem;
 }
 
 /* 입력창 그룹 */
@@ -206,7 +206,7 @@ button {
   border-radius: 12px;
   background-color: var(--bg-gray);
   box-sizing: border-box;
-  font-size: .9rem;
+  font-size: 0.9rem;
   outline: none;
   transition: border 0.2s;
 }
@@ -217,7 +217,7 @@ button {
 
 .input-group input::placeholder {
   font-weight: normal;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #aaa;
 }
 
@@ -240,7 +240,7 @@ button {
 
 .find-password a {
   text-decoration: none;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: #999;
 }
 
@@ -332,7 +332,7 @@ button {
   background: #f1f5f9;
   padding: 14px;
   border-radius: 12px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin-bottom: 20px;
   cursor: pointer;
   border: 1px solid #eceff1;
@@ -351,7 +351,7 @@ button {
   width: 100%;
   margin: 24px 0;
   color: #999;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .divider-text::before,
@@ -416,7 +416,7 @@ button {
 .page-title {
   font-size: 24px;
   font-weight: 700;
-  color: #0088FF;
+  color: #0088ff;
   margin-bottom: 12px;
 }
 
@@ -446,7 +446,7 @@ button {
   height: 52px;
   padding: 0 45px 0 16px;
   /* 오른쪽 여백은 아이콘 자리 */
-  background-color: #F2F4F6;
+  background-color: #f2f4f6;
   border: none;
   border-radius: 12px;
   font-size: 15px;
@@ -455,7 +455,7 @@ button {
 }
 
 .input-wrapper input:focus {
-  background-color: #E8F3FF;
+  background-color: #e8f3ff;
   /* 포커스 시 살짝 푸른색 */
 }
 
@@ -484,7 +484,7 @@ button {
   height: 52px;
   margin: 0;
   margin-top: 50px;
-  background-color: #BCE0FD;
+  background-color: #bce0fd;
   /* 비활성 색상 */
   color: white;
   border: none;
@@ -497,7 +497,7 @@ button {
 
 /* 버튼 활성화 상태 (JS에서 disabled 풀었을 때) */
 .btn-primary:not(:disabled) {
-  background-color: #0088FF;
+  background-color: #0088ff;
   cursor: pointer;
 }
 
@@ -537,7 +537,7 @@ button {
   margin-bottom: 2rem;
 }
 
-.logo-section>a {
+.logo-section > a {
   position: absolute;
   top: -2px;
   left: 0;
@@ -556,7 +556,7 @@ button {
 
 /* 페이지 제목 */
 h2 {
-  color: #0088FF;
+  color: #0088ff;
   font-size: 2rem;
 }
 
@@ -564,7 +564,7 @@ h2 {
   font-size: 0.8rem;
   word-break: keep-all;
   color: #999;
-  margin: .8rem 0 1.8rem;
+  margin: 0.8rem 0 1.8rem;
 }
 
 /* 입력창 */
@@ -580,7 +580,7 @@ h2 {
   border-radius: 12px;
   background-color: #f5f7fa;
   box-sizing: border-box;
-  font-size: .9rem;
+  font-size: 0.9rem;
   outline: none;
   transition: border 0.2s;
 }
@@ -591,7 +591,7 @@ h2 {
 
 .input-wrapper input::placeholder {
   font-weight: normal;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #aaa;
 }
 
@@ -611,10 +611,8 @@ h2 {
 }
 
 .btn-primary:active {
-  background-color: #1976D2;
+  background-color: #1976d2;
 }
-
-
 
 /* 비밀번호 그룹 내 아이콘 배치 */
 .password-container {
@@ -652,3 +650,29 @@ h2 {
 }
 
 /* resetPassword css end */
+
+/* 메인페이지 햄버거 메뉴 css 시작 */
+
+/* 부트스트랩 오프캔버스를 위한 최소한의 커스텀 */
+.offcanvas {
+  transition: transform 0.3s ease-in-out;
+  width: 280px; /* 메뉴 너비 조정 */
+}
+
+/* 리액트 상태에 따른 노출 제어 */
+.offcanvas.show {
+  transform: none;
+}
+
+/* 리스트 아이템 클릭 시 포커스 제거 및 효과 */
+.list-group-item {
+  border-left: 4px solid transparent;
+  transition: all 0.2s;
+}
+
+.list-group-item:hover {
+  border-left: 4px solid #0d6efd; /* 부트스트랩 기본 블루 */
+  background-color: #f8f9fa;
+}
+
+/* 메인페이지 햄버거 메뉴 css 종료 */

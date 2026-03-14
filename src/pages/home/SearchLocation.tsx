@@ -85,13 +85,11 @@ export default function SearchLocation() {
   };
 
   return (
-    <div className="mt-4">
-      <input
-        type="text"
-        className="form-control rounded-5 shadow-sm px-4"
-        placeholder="지역 검색 (예: 의정부동)"
-        onKeyDown={handleSearch}
-      />
-    </div>
+    <input
+      type="text"
+      className="form-control rounded-5 shadow-sm px-4"
+      placeholder="지역 검색 (예: 의정부동)"
+      onKeyDown={handleSearch}
+    />
   );
 }

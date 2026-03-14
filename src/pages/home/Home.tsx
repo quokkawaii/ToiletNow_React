@@ -5,12 +5,12 @@ import MapFillter from "./MapFillter";
 
 export default function Home() {
   return (
-    <>
+    <div className="mt-4">
       <MapProvider>
         <SearchLocation />
         <MapFillter />
         <KakaoMap />
       </MapProvider>
-    </>
+    </div>
   );
 }

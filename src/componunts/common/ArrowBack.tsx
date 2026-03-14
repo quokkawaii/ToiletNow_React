@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { arrowBack } from "../../assets/Images";
 
 export default function ArrowBack() {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   return (
-    <button onClick={() => navigator(-1)} className="logo-line">
-      <img src={arrowBack} alt="뒤로가기" />
+    <button className="btn p-0 border-0" onClick={() => navigate(-1)}>
+      <img src={arrowBack} alt="뒤로가기" style={{ width: "24px" }} />
     </button>
   );
 }
