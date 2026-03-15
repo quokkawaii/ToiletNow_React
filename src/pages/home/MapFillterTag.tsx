@@ -1,4 +1,4 @@
-import { useMap, type ToiletOption } from "../../contexts/MapContext";
+import { useMap, type ToiletOption } from "../MapContext";
 import {
   createMarker,
   cleanMarkers,

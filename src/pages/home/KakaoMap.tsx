@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useMap } from "../../contexts/MapContext";
+import { useMap } from "../MapContext";
 import CurrLocBtn from "./CurrLocBtn";
 import Loading from "../../componunts/common/Loading";
 import { type Toilet } from "../../utils/homeUtil/totiletUtil";

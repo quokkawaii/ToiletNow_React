@@ -1,4 +1,4 @@
-import { MapProvider } from "../../contexts/MapContext";
+import { MapProvider } from "../MapContext";
 import SearchLocation from "./SearchLocation";
 import KakaoMap from "./KakaoMap";
 import MapFillter from "./MapFillter";

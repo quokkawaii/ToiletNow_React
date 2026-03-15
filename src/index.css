@@ -43,7 +43,7 @@ button {
   --bs-btn-disabled-border-color: #0088ff;
 }
 
-/* 로딩 */
+/* 로딩 css 시작 */
 .spinner-container {
   display: flex;
   justify-content: center;
@@ -71,6 +71,10 @@ button {
     transform: rotate(360deg);
   }
 }
+
+/* 로딩 css 종료 */
+
+/* 메인 화면 위치 정보 표시 상자 css 시작  */
 
 /* 개방 여부 표시 */
 #markerStateBox {
@@ -119,6 +123,8 @@ button {
 #gpsBtn:active {
   background-color: #f2f2f2;
 }
+
+/* 메인 화면 위치 정보 표시 상자 css 종료  */
 
 /* login css start */
 
