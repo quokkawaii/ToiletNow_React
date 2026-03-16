@@ -270,3 +270,21 @@ const changeStateMap = (lat: number, lng: number) => {
 7. 회원가입 기능까지 만들었는데 실제로 동작하는지는 모름 (테스트 해야됨 )
 
 8. 앞으로의 README 작성 방식 : 업데이트 내용과 수정해야할것을 작성 해두기, 커밋하기전 내용을 커밋 커맨트로 옮긴후 README의 수정 내용은 삭제, 업데이트 내용만 남겨두기
+
+# 20260317
+
+- 수정 내용
+
+1. api/authApiUtil.ts의 ENDPOINT 변수에 백틱하나 들어가서 경로 에러 => 수정 완료
+
+2. navigator() 사용시 .ts파일에서는 호출이 안되는것을 확인 / get과 post 요청이 에러가 뜬다면 => null 반환 / return값이 null => 404페이지로 이동?
+
+3. 정규식 테스트하는 부분이 참일경우 에러를 주게 되어있었음 => 수정 완료
+
+4. package.json의 script { dev : vite --host 127.0.0.1 }로 수정 기존 경로 localhost:5173에서 127.0.0.1:5173 => 수정 완료
+
+- 업데이트 내용
+
+1. router/routing.tsx 생성
+
+2. hominPark@homin.com 회원가입 완료

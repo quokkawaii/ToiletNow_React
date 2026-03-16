@@ -81,26 +81,28 @@ export default function Signup() {
     // 추후 커스텀훅을 생각해서 문자열 입력시
     // 해당 문자열, 정규식 입력시 해당 문자열 테스트하는 정규식 함수로 만들었음
     // 이름 체크
-    if (regexTest(name, nameRegex)) return alert("이름 형식이 잘못되었습니다.");
+    if (!regexTest(name, nameRegex))
+      return alert("이름 형식이 잘못되었습니다.");
     // 이메일 체크
-    if (regexTest(email, emailRegex))
+    if (!regexTest(email, emailRegex))
       return alert("이메일 형식이 잘못되었습니다.");
     // 비밀번호 체크
-    if (regexTest(password, passwordRegex))
+    if (!regexTest(password, passwordRegex))
       return alert("비밀번호 형식이 잘못되었습니다.");
     // 비밀번호와 비밀번호 확인 비교
     if (password != checkPassword) return alert("비밀번호가 똑같지 않습니다.");
     // 통과시 api 호출
-    const path = "/common/signup";
-    const item = {
-      uemail: email,
-      uname: name,
-      upassword: password,
-    };
-    const json = await requestPost(item, path);
+    // const path = "/common/signup";
+    // const item = {
+    //   uemail: email,
+    //   uname: name,
+    //   upassword: password,
+    // };
+    // const json = await requestPost(item, path);
     // 여기까지 통과시 페이지 이동 + 회원가입 성공 모달 생성
-    return json;
+    // return json;
   };
+
   return (
     <div className="bg-light min-vh-100 d-flex align-items-center justify-content-center p-3">
       <div
